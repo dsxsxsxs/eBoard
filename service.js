@@ -1,5 +1,7 @@
-var io = require('socket.io').listen(8091,{log:true});
-
+// var io = require('socket.io').listen(8091,{log:true});
+// , app = express()
+// , server = require('http').createServer(app)
+,
 console.log("Socket.io is running on 8091.");
 var express = require('express');
 var app = express();
@@ -18,14 +20,14 @@ if (ipAddress === "undefined") {
 	ipAddress = "127.0.0.1";
 };
 app.use(express.bodyParser());
-app.listen(serverPort, ipAddress, function(){
+var server = app.listen(serverPort, ipAddress, function(){
 	//console.log("Express Server is running on "+serverPort+".");
 	console.log('%s: Express Server started on %s:%d ...',
 		Date(Date.now() ), ipAddress, serverPort);
 
 });
 
-
+io = require("socket.io").listen(server);
 // console.log("Express Server is running on "+serverPort+".");
 
 function fileResp(req, resp){

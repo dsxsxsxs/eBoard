@@ -55,7 +55,7 @@
 
 		var host = location.href.split(':8090')[0];
 		// var socket = io.connect(host+":8091");
-		var socket = io.connect(location.href+":8091");
+		var socket = io.connect(location.href+":8000");
 
 		function debug(msg){
 			socket.send('{op:"debug",msg:'+msg+'}');
