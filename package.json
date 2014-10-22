@@ -9,11 +9,11 @@
     "openshift"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "sys.dsxs",
+    "email": "dsxsxsxs@gmail.com",
+    "url": "http://bg.dsxs.me/"
   },
-  "homepage": "http://www.openshift.com/",
+  "homepage": "http://bg.dsxs.me/",
   "repository": {
     "type": "git",
     "url": "https://github.com/openshift/origin-server"
@@ -26,10 +26,11 @@
 
   "dependencies": {
     "express": "~3.4.4"
+    "socket.io": "~0.9.10"
   },
   "devDependencies": {},
   "bundleDependencies": [],
 
   "private": true,
-  "main": "server.js"
+  "main": "service.js"
 }

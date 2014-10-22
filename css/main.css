@@ -1,0 +1,109 @@
+.displayPanel{
+/*	margin-top: 30px;*/
+/*	-moz-box-shadow: 0 0 15px 5px #888;
+	-webkit-box-shadow: 0 0 15px 5px #888;
+	box-shadow: 0 0 15px 5px #888;
+	border: 7px solid #f5f4e9;*/
+}
+.L{
+	background-size: 168px 170px;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	bottom: 0px;
+	z-index: 5;
+}
+#WL{
+/*297X300*/
+	background-image: url('../imgs/white.png');
+}
+#KL{
+/*297X300*/
+	margin-left: 100px;
+	background-image: url('../imgs/black.png');
+}
+#BL{
+/*297X300*/
+	margin-left: 200px;
+	background-image: url('../imgs/blue.png');
+}
+#RL{
+/*297X300*/
+	margin-left: 300px;
+	background-image: url('../imgs/red.png');
+}
+.M{
+	background-size: 149px 150px;
+	width: 90px;
+	height: 90px;
+	position: absolute;
+	bottom: 0px;
+	z-index: 5;
+}
+#WM{
+	margin-left: 410px;
+	background-image: url('../imgs/white.png');
+}
+#KM{
+	margin-left: 500px;
+	background-image: url('../imgs/black.png');
+}
+#BM{
+	margin-left: 590px;
+	background-image: url('../imgs/blue.png');
+}
+#RM{
+	margin-left: 680px;
+	background-image: url('../imgs/red.png');
+}
+.S{
+	background-size: 99px 100px;
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	bottom: 0px;
+	z-index: 5;
+}
+#WS{
+	margin-left: 780px;
+	background-image: url('../imgs/white.png');
+}
+#KS{
+	margin-left: 840px;
+	background-image: url('../imgs/black.png');
+}
+#BS{
+	margin-left: 900px;
+	background-image: url('../imgs/blue.png');
+}
+#RS{
+	margin-left: 960px;
+	background-image: url('../imgs/red.png');
+}
+.glass {
+    position: relative;
+}
+
+.glass:after{
+    content: " "; 
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 0;
+    -webkit-background-origin: border-box;
+    -moz-background-origin: border;
+    background-origin: border-box;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, .15)), to(rgba(0, 0, 0, .25))), -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, .15)), color-stop(0.501, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0)));
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, .15), rgba(0, 0, 0, .25)), -moz-linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+    background: linear-gradient(top, rgba(255, 255, 255, .15), rgba(0, 0, 0, .25)), linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+}
+
+#bear{
+	width: 300px;
+	height: 300px;
+	background-image:url('../imgs/bear.png');
+	position:absolute;
+	bottom:0px;
+/*	float:right;*/
+	right:0px;
+}
