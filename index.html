@@ -18,7 +18,7 @@
 <!-- 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" /> -->
 		<link rel="stylesheet" href="./css/main.css" />
 		<script type="text/javascript" src="libs/jquery-1.7.1.js"> </script>
-		<script src="./libs/socket.io.js"></script>
+		<script src="http://eboard-dsxs.rhcloud.com:8000/socket.io/socket.io.js"></script>
 <!-- 		<script src="http://172.20.10.12:8088/socket.io/socket.io.js"></script> -->
 	</head>
 
@@ -55,7 +55,7 @@
 
 		var host = location.href.split(':8090')[0];
 		// var socket = io.connect(host+":8091");
-		var socket = io.connect(location.href+":8000");
+		var socket = io.connect("http://eboard-dsxs.rhcloud.com"+":8000");
 
 		function debug(msg){
 			socket.send('{op:"debug",msg:'+msg+'}');

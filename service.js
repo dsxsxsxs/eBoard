@@ -10,7 +10,7 @@ var path = require("path");
 var userSerial = 0;
 var serverPort = 80;
 var io = require('socket.io');
-var ipAddress  = process.env.OPENSHIFT_NODEJS_IP;
+var ipAddress  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var serverPort = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 if (ipAddress === "undefined") {
