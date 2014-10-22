@@ -1,15 +1,15 @@
 // var io = require('socket.io').listen(8091,{log:true});
 // , app = express()
 // , server = require('http').createServer(app)
-,
-console.log("Socket.io is running on 8091.");
+
+// console.log("Socket.io is running on 8091.");
 var express = require('express');
 var app = express();
 var url = require("url");
 var path = require("path");
 var userSerial = 0;
 var serverPort = 80;
-
+var io = require('socket.io');
 var ipAddress  = process.env.OPENSHIFT_NODEJS_IP;
 var serverPort = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
