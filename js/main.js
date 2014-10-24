@@ -1,9 +1,7 @@
 
 var DEVICE_TYPE = 'GENERAL';
 
-var lastX = 0;
-var lastY = 0;
-var lineWidth = 5;
+
 var settingDsp = 1;
 
 var cs = document.getElementById("drawPanel");
@@ -57,8 +55,8 @@ function eventBinding(){
 	    var touch = e.touches[0];
 	    CsCtrl.penMove(touch.pageX,touch.pageY);
 	    // alert(lastY+';'+(cs.height-100));
-	    if ( settingDsp == 0 || (lastY < (cs.height-100)) )
-	    	socket.send('{op:"dp",x:'+lastX+',y:'+lastY+'}');
+	    // if ( settingDsp == 0 || (lastY < (cs.height-100)) )
+	    // 	socket.send('{op:"dp",x:'+lastX+',y:'+lastY+'}');
 	}, false);
 
 	document.addEventListener('touchend', function(e){

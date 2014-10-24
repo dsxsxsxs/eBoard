@@ -57,4 +57,4 @@ var CommandsClass = function(socket){
 
 
 	this.start();
-}
+};

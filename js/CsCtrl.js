@@ -81,4 +81,4 @@ var CsCtrlClass = function(cs, ctx){
 	  ctx.lineTo(x2, y2);
 	  ctx.stroke();
 	}
-}
+};
