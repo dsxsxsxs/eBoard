@@ -1,3 +1,6 @@
+var CsCtrl;
+var Commands;
+
 var CsCtrlClass = function(cs, ctx){
 	if (!this instanceof CsCtrlClass)return new CsCtrlClass;
 
@@ -17,7 +20,10 @@ var CsCtrlClass = function(cs, ctx){
 	ctx.lineWidth=localPen.lineWidth;
 
 	this.setPen = function(color, lineWidth){
-		if (lineWidth) localPen.lineWidth=lineWidth;
+		if (lineWidth) {
+			localPen.lineWidth=lineWidth;
+			eraser.lineWidth=lineWidth*5;
+		}
 		localPen.color=color;
 	};
 	this.setPanelSize = function(w, h, f){
@@ -53,10 +59,10 @@ var CsCtrlClass = function(cs, ctx){
 	    
 	    // Draw the line locally.
 	    if (isErase){
-	    	drawLine(eraser.color, eraser.lineWidth, localPen.x, localPen.y, x, y);
+	    	this.drawLine(eraser.color, eraser.lineWidth, localPen.x, localPen.y, x, y);
 	    	Commands.newLineToCmd(x, y, eraser.color, eraser.lineWidth);
 	    }else {
-	    	drawLine(localPen.color, localPen.lineWidth, localPen.x, localPen.y, x, y);
+	    	this.drawLine(localPen.color, localPen.lineWidth, localPen.x, localPen.y, x, y);
 	    	Commands.newLineToCmd(x, y, localPen.color, localPen.lineWidth);
 	    }
 	    

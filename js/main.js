@@ -6,8 +6,7 @@ var settingDsp = 1;
 
 var cs = document.getElementById("drawPanel");
 var ctx = cs.getContext("2d");
-var Commands;
-var CsCtrl = new CsCtrlClass(cs, ctx);
+CsCtrl = new CsCtrlClass(cs, ctx);
 
 var socket = io.connect("http://eboard-dsxs.rhcloud.com"+":8000");
 // var socket = io.connect("http://12"+":8000");
@@ -16,13 +15,13 @@ function debug(msg){
 	// alert(msg);
 	// $('#status').text(msg);
 }
-Commands = new CommandsClass(socket);
+
 socket.on('connect',function(data){
 	console.log('socket.io connected.');
 	console.log(data);
 
 });
-
+Commands = new CommandsClass(socket);
 socket.on('message', function(msg){
 	console.log(msg);
 });

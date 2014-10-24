@@ -8,17 +8,10 @@ var app = express();
 var url = require("url");
 var path = require("path");
 var userSerial = 0;
-var serverPort = 80;
-var io = require('socket.io');
 var ipAddress  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var serverPort = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-if (ipAddress === "undefined") {
-	//  Log errors on OpenShift but continue w/ 127.0.0.1 - this
-	//  allows us to run/test the app locally.
-	console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
-	ipAddress = "127.0.0.1";
-};
+
 app.use(express.bodyParser());
 var server = app.listen(serverPort, ipAddress, function(){
 	//console.log("Express Server is running on "+serverPort+".");
@@ -27,7 +20,7 @@ var server = app.listen(serverPort, ipAddress, function(){
 
 });
 
-io = require("socket.io").listen(server);
+var io = require("socket.io").listen(server);
 // console.log("Express Server is running on "+serverPort+".");
 
 function fileResp(req, resp){
