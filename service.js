@@ -48,8 +48,8 @@ app.get('/*', fileResp);
 
 io.sockets.on('connection', function (socket) {
 	// socket.send('{"session":"'+socket.id+'"}');
-	socket.send('{op:"user_serial",sn:"'+userSerial+'"}');
-	socket.broadcast.send('{op:"user_login",sn:"'+userSerial+'"}');
+	// socket.emit( 'joined', {sn: userSerial});
+	// socket.broadcast.emit("new_client",{sn:userSerial});
 	console.log(userSerial);
 	++userSerial;
 	console.log(socket.id);
@@ -57,7 +57,15 @@ io.sockets.on('connection', function (socket) {
     	console.log(msg);
         socket.broadcast.send(msg);
     });
-    socket.on('disconnect', function () {
+    socket.on('resize', function(data){
+    	socket.broadcast.emit( 'resize',data);
+    });
+    socket.on('cmd', function(data){
+    	data.timestamp=Date.now();
+    	socket.broadcast.emit( 'cmd',data);
+    });
+    socket.on('disconnect', function (msg) {
+    	console.log(msg);
     	// socket.broadcast.send('{x:0,y:0,clear:true}');
     });
 });
