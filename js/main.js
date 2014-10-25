@@ -11,7 +11,8 @@ CsCtrl = new CsCtrlClass(cs, ctx);
 var socket = io.connect("http://eboard-dsxs.rhcloud.com"+":8000");
 // var socket = io.connect("http://12"+":8000");
 function debug(msg){
-	// socket.send('{op:"debug",msg:'+msg+'}');
+	socket.emit('debug', msg);
+	console.log(msg);
 	// alert(msg);
 	// $('#status').text(msg);
 }
@@ -25,7 +26,9 @@ Commands = new CommandsClass(socket);
 socket.on('message', function(msg){
 	console.log(msg);
 });
-
+socket.on('debug', function(data){
+	console.log(data);
+});
 
 function eventBinding(){
 	document.addEventListener('touchmove', function(e) {
@@ -37,6 +40,7 @@ function eventBinding(){
 	   	}else{
 	   		var touch = e.touches[0];
 	    	CsCtrl.penDown(touch.pageX,touch.pageY);
+	    	debug("penDown("+touch.pageX+','+touch.pageY+")");
 	    }
 	}, false);
 
@@ -53,6 +57,7 @@ function eventBinding(){
 	    }
 	    var touch = e.touches[0];
 	    CsCtrl.penMove(touch.pageX,touch.pageY);
+	    debug("penMove("+touch.pageX+','+touch.pageY+")");
 	    // alert(lastY+';'+(cs.height-100));
 	    // if ( settingDsp == 0 || (lastY < (cs.height-100)) )
 	    // 	socket.send('{op:"dp",x:'+lastX+',y:'+lastY+'}');

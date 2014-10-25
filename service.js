@@ -50,6 +50,10 @@ io.sockets.on('connection', function (socket) {
     	console.log(msg);
         socket.broadcast.send(msg);
     });
+    socket.on('debug', function (msg) {
+    	console.log(msg);
+        socket.broadcast.send(msg);
+    });
     socket.on('resize', function(data){
     	socket.broadcast.emit( 'resize',data);
     });
