@@ -20,7 +20,7 @@ var CommandsClass = function(socket){
 	};
 	var parse = function(){
 		if (cmdBuf.length<=0)return;
-		var cmd=cmdBuf.unshift();
+		var cmd=cmdBuf.shift();
 		console.log(cmd);
 		switch (cmd.op){
 			case 'm':
