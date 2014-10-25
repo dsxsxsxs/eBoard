@@ -29,7 +29,7 @@ var CommandsClass = function(socket){
 	var parse = function(){
 		if (cmdBuf.length<=0)return;
 		var cmd=cmdBuf.shift();
-		console.log(cmd);
+		// console.log(cmd);
 		switch (cmd.op){
 			case 'm':
 				current[cmd.s]=cmd;
@@ -41,8 +41,8 @@ var CommandsClass = function(socket){
 					CsCtrl.drawLine(
 						cmd.c,
 						cmd.l,
-						current[cmd.session].x,
-						current[cmd.session].y,
+						current[cmd.s].x,
+						current[cmd.s].y,
 						cmd.x,
 						cmd.y
 					);
