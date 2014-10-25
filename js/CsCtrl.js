@@ -13,7 +13,7 @@ var CsCtrlClass = function(cs, ctx){
 		},
 		eraser={
 			color: '#fff',
-			lineWidth: 25
+			lineWidth: 50
 		};
 	ctx.lineCap='round';
 	ctx.strokeStyle=localPen.color;
@@ -22,7 +22,7 @@ var CsCtrlClass = function(cs, ctx){
 	this.setPen = function(color, lineWidth){
 		if (lineWidth) {
 			localPen.lineWidth=lineWidth;
-			eraser.lineWidth=lineWidth*5;
+			eraser.lineWidth=lineWidth*10;
 		}
 		localPen.color=color;
 	};

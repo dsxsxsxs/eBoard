@@ -13,7 +13,8 @@ var CommandsClass = function(socket){
 		current[data.session]=null;
 	});	
 	socket.on('cmd', function(data){
-		cmdBuf.push(data);
+		// cmdBuf.push(data);
+		execCmd(data);
 	});
 	socket.on('resize', function(data){
 		CsCtrl.setPanelSize(data.w, data.h);
@@ -25,6 +26,28 @@ var CommandsClass = function(socket){
 		
 	var newCmd = function(data){
 		socket.emit('cmd',data);
+	};
+	var execCmd = function(cmd){
+		switch (cmd.op){
+			case 'm':
+				current[cmd.s]=cmd;
+				break;
+			case 'l':
+				if (current[cmd.s]===undefined)
+					 current[cmd.s]=cmd;
+				else {
+					CsCtrl.drawLine(
+						cmd.c,
+						cmd.l,
+						current[cmd.s].x,
+						current[cmd.s].y,
+						cmd.x,
+						cmd.y
+					);
+					current[cmd.s]=cmd;
+				}
+				break;
+		}
 	};
 	var parse = function(){
 		if (cmdBuf.length<=0)return;
@@ -50,7 +73,7 @@ var CommandsClass = function(socket){
 				}
 				break;
 		}
-	}
+	};
 	this.newMoveToCmd = function(x, y){
 		newCmd({op: 'm', x: x, y: y, s:session});
 	};
@@ -66,5 +89,5 @@ var CommandsClass = function(socket){
 	};
 
 
-	this.start();
+	// this.start();
 };
