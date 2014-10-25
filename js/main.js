@@ -31,19 +31,6 @@ socket.on('debug', function(data){
 });
 
 function eventBinding(){
-	document.addEventListener('touchmove', function(e) {
-		e.preventDefault();
-	    if ( e.touches.length == 2 ){
-	   		var x = e.touches[1].pageX;
-	   		var y = e.touches[1].pageY;
-	   		CsCtrl.penDown(x, y, true);
-	   	}else{
-	   		var touch = e.touches[0];
-	    	CsCtrl.penDown(touch.pageX,touch.pageY);
-	    	debug("penDown("+touch.pageX+','+touch.pageY+")");
-	    }
-	}, false);
-
 	document.addEventListener('touchstart', function(e) {
 	    e.preventDefault();
 	    // debug(e.touches.length);
@@ -56,13 +43,24 @@ function eventBinding(){
 	    	}
 	    }
 	    var touch = e.touches[0];
-	    CsCtrl.penMove(touch.pageX,touch.pageY);
-	    debug("penMove("+touch.pageX+','+touch.pageY+")");
+	    CsCtrl.penDown(touch.pageX,touch.pageY);
+	    // debug("penDown("+touch.pageX+','+touch.pageY+")");
 	    // alert(lastY+';'+(cs.height-100));
 	    // if ( settingDsp == 0 || (lastY < (cs.height-100)) )
 	    // 	socket.send('{op:"dp",x:'+lastX+',y:'+lastY+'}');
 	}, false);
-
+	document.addEventListener('touchmove', function(e) {
+		e.preventDefault();
+	    if ( e.touches.length == 2 ){
+	   		var x = e.touches[1].pageX;
+	   		var y = e.touches[1].pageY;
+	   		CsCtrl.penMove(x, y, true);
+	   	}else{
+	   		var touch = e.touches[0];
+	    	CsCtrl.penMove(touch.pageX,touch.pageY);
+	    	// debug("penMove("+touch.pageX+','+touch.pageY+")");
+	    }
+	}, false);
 	document.addEventListener('touchend', function(e){
 		CsCtrl.penUp();
 	}, false);
