@@ -1,9 +1,17 @@
 var CommandsClass = function(socket){
 	if (!this instanceof CommandsClass)return new CommandsClass;
 
-	var cmdBuf=[], timer;
-	var current=null;
-
+	var cmdBuf=[], timer, session;
+	var current={};
+	socket.on('joined', function(data){
+		session=data.session;
+	});
+	socket.on('new_client', function(data){
+		current[data.session]={};
+	});
+	socket.on('close', function(data){
+		current[data.session]=null;
+	});	
 	socket.on('cmd', function(data){
 		cmdBuf.push(data);
 	});
@@ -24,30 +32,30 @@ var CommandsClass = function(socket){
 		console.log(cmd);
 		switch (cmd.op){
 			case 'm':
-				current=cmd;
+				current[cmd.s]=cmd;
 				break;
 			case 'l':
-				if (current===undefined)
-					 current=cmd;
+				if (current[cmd.s]===undefined)
+					 current[cmd.s]=cmd;
 				else {
 					CsCtrl.drawLine(
 						cmd.c,
 						cmd.l,
-						current.x,
-						current.y,
+						current[cmd.session].x,
+						current[cmd.session].y,
 						cmd.x,
 						cmd.y
 					);
-					current=cmd;
+					current[cmd.s]=cmd;
 				}
 				break;
 		}
 	}
 	this.newMoveToCmd = function(x, y){
-		newCmd({op: 'm', x: x, y: y});
+		newCmd({op: 'm', x: x, y: y, s:session});
 	};
 	this.newLineToCmd = function(x, y, c, l){
-		newCmd({op: 'l', x: x, y: y, c: c, l: l});
+		newCmd({op: 'l', x: x, y: y, c: c, l: l, s:session});
 	};
 	this.stop=function(){
 		clearInterval(timer);

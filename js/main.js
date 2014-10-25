@@ -18,11 +18,12 @@ function debug(msg){
 }
 
 socket.on('connect',function(data){
-	console.log('socket.io connected.');
-	console.log(data);
+	// console.log('socket.io connected.');
+	// console.log(data);
 
 });
 Commands = new CommandsClass(socket);
+
 socket.on('message', function(msg){
 	console.log(msg);
 });
