@@ -9,7 +9,7 @@ var CsCtrlClass = function(cs, ctx){
 			x: 0,
 			y: 0,
 			color: '#000',
-			lineWidth: 5;
+			lineWidth: 5
 		},
 		eraser={
 			color: '#fff',

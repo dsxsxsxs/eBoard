@@ -16,7 +16,7 @@ var CommandsClass = function(socket){
 		
 		
 	var newCmd = function(data){
-		socket.emit('cmd': data);
+		socket.emit('cmd',data);
 	};
 	var parse = function(){
 		if (cmdBuf.length<=0)return;
