@@ -81,7 +81,7 @@ var CsCtrlClass = function(cs, ctx){
 	this.drawLine = function(color, thickness, x1, y1, x2, y2) {
 	  ctx.strokeStyle = color;
 	  ctx.lineWidth   = thickness;
-	  
+	  ctx.lineCap='round';
 	  ctx.beginPath();
 	  ctx.moveTo(x1, y1);
 	  ctx.lineTo(x2, y2);

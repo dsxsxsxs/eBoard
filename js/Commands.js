@@ -21,6 +21,7 @@ var CommandsClass = function(socket){
 	var parse = function(){
 		if (cmdBuf.length<=0)return;
 		var cmd=cmdBuf.unshift();
+		console.log(cmd);
 		switch (cmd.op){
 			case 'm':
 				current=cmd;
@@ -53,6 +54,7 @@ var CommandsClass = function(socket){
 	};
 	this.start=function(){
 		timer=setInterval(parse, 20);
+		debug('parser: '+timer);
 	};
 
 
